@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Layout, { PALETTE } from "@/components/Layout";
+import Layout, { PALETTE } from "../components/Layout";
 
 const POLES = [
   { key: "cacao", label: "Cacao", tagline: "Terroirs, fèves & créations chocolatées", color: "#6a3e2f" },
