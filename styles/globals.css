@@ -18,3 +18,17 @@ body {
   background: #2b2339;
   border-radius: 999px;
 }
+/* Animation de la bulle qui tourne autour de BAWON */
+@keyframes bawon-orbit {
+  0% {
+    transform: rotate(0deg) translateX(70px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(70px) rotate(-360deg);
+  }
+}
+
+.bawon-orbit-dot {
+  animation: bawon-orbit 10s linear infinite;
+  transform-origin: center center;
+}
