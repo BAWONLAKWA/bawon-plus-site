@@ -18,17 +18,69 @@ body {
   background: #2b2339;
   border-radius: 999px;
 }
-/* Animation de la bulle qui tourne autour de BAWON */
-@keyframes bawon-orbit {
+/* Bulles translucides autour du logo BAWON */
+
+.bawon-bubble {
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.05)
+  );
+  box-shadow: 0 0 25px rgba(250, 204, 21, 0.45);
+  opacity: 0.7;
+}
+
+@keyframes bawon-bubble-float-1 {
   0% {
-    transform: rotate(0deg) translateX(70px) rotate(0deg);
+    transform: translateY(0) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-8px) scale(1.05);
+    opacity: 1;
   }
   100% {
-    transform: rotate(360deg) translateX(70px) rotate(-360deg);
+    transform: translateY(0) scale(1);
+    opacity: 0.6;
   }
 }
 
-.bawon-orbit-dot {
-  animation: bawon-orbit 10s linear infinite;
-  transform-origin: center center;
+@keyframes bawon-bubble-float-2 {
+  0% {
+    transform: translateY(0) scale(0.9);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(6px) scale(1.02);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(0) scale(0.9);
+    opacity: 0.5;
+  }
+}
+
+@keyframes bawon-bubble-float-3 {
+  0% {
+    transform: translateY(0) scale(0.95);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-10px) scale(1.08);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) scale(0.95);
+    opacity: 0.5;
+  }
+}
+
+.bawon-bubble-1 {
+  animation: bawon-bubble-float-1 5s ease-in-out infinite;
+}
+.bawon-bubble-2 {
+  animation: bawon-bubble-float-2 6s ease-in-out infinite;
+}
+.bawon-bubble-3 {
+  animation: bawon-bubble-float-3 7s ease-in-out infinite;
 }
