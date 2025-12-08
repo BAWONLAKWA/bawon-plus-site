@@ -15,13 +15,11 @@ export default function HomePage() {
   );
 }
 
-/* ---------------- HEADER AVEC MENU + SOUS-MENUS ---------------- */
+/* ---------------- HEADER ---------------- */
 
 const Header = () => {
-  const [openMenu, setOpenMenu] = useState(null);
-
   return (
-    <header className="fixed top-0 left-0 right-0 z-30 bg-black/70 backdrop-blur border-b border-white/10">
+    <header className="fixed top-0 left-0 right-0 z-30 bg-black/75 backdrop-blur border-b border-white/10">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         {/* Logo */}
         <div className="flex items-center gap-2">
@@ -31,99 +29,25 @@ const Header = () => {
           <span className="text-2xl font-bold text-purple-400">+</span>
         </div>
 
-        {/* Nav */}
+        {/* Nav simple (tu pourras ajouter des sous-menus plus tard) */}
         <nav className="hidden items-center gap-6 text-sm md:flex">
-          <a
-            href="#top"
-            className="text-white/70 hover:text-white transition-colors"
-          >
+          <a href="#top" className="text-white/70 hover:text-white">
             Accueil
           </a>
-
-          {/* Services */}
-          <div
-            className="relative"
-            onMouseEnter={() => setOpenMenu("services")}
-            onMouseLeave={() => setOpenMenu(null)}
-          >
-            <button className="text-white/70 hover:text-white transition-colors flex items-center gap-1">
-              Services
-              <span className="text-xs">▾</span>
-            </button>
-            {openMenu === "services" && (
-              <div className="absolute right-0 mt-2 w-48 rounded-xl border border-white/10 bg-black/95 shadow-lg text-xs">
-                <a
-                  href="#poles"
-                  className="block px-4 py-2 hover:bg-white/5"
-                >
-                  BAWON Spirit
-                </a>
-                <a
-                  href="#poles"
-                  className="block px-4 py-2 hover:bg-white/5"
-                >
-                  BAWON Label
-                </a>
-                <a
-                  href="#poles"
-                  className="block px-4 py-2 hover:bg-white/5"
-                >
-                  BAWON Lifestyle
-                </a>
-              </div>
-            )}
-          </div>
-
-          {/* Investissement */}
-          <div
-            className="relative"
-            onMouseEnter={() => setOpenMenu("invest")}
-            onMouseLeave={() => setOpenMenu(null)}
-          >
-            <button className="text-white/70 hover:text-white transition-colors flex items-center gap-1">
-              Investissement
-              <span className="text-xs">▾</span>
-            </button>
-            {openMenu === "invest" && (
-              <div className="absolute right-0 mt-2 w-56 rounded-xl border border-white/10 bg-black/95 shadow-lg text-xs">
-                <a
-                  href="#invest"
-                  className="block px-4 py-2 hover:bg-white/5"
-                >
-                  Investissements
-                </a>
-                <a
-                  href="#invest"
-                  className="block px-4 py-2 hover:bg-white/5"
-                >
-                  Partenariats
-                </a>
-                <a
-                  href="#invest"
-                  className="block px-4 py-2 hover:bg-white/5"
-                >
-                  Dons & mécénat
-                </a>
-              </div>
-            )}
-          </div>
-
-          <a
-            href="#about"
-            className="text-white/70 hover:text-white transition-colors"
-          >
-            Qui sommes-nous
+          <a href="#universe" className="text-white/70 hover:text-white">
+            Univers
           </a>
-
-          <a
-            href="#contact"
-            className="text-white/70 hover:text-white transition-colors"
-          >
+          <a href="#poles" className="text-white/70 hover:text-white">
+            Services / Pôles
+          </a>
+          <a href="#invest" className="text-white/70 hover:text-white">
+            Investissement
+          </a>
+          <a href="#contact" className="text-white/70 hover:text-white">
             Contact
           </a>
         </nav>
 
-        {/* CTA droite */}
         <div className="hidden md:flex items-center gap-3">
           <button className="rounded-full border border-purple-400 px-4 py-1 text-xs font-medium uppercase tracking-widest text-purple-200 hover:bg-purple-600/20">
             Call to action
@@ -134,82 +58,111 @@ const Header = () => {
   );
 };
 
-/* ---------------- HERO 1 : ÉCRAN NOIR, BAWON + BULLE + + QUI CHANGE ---------------- */
+/* ---------------- HERO : BAWON JAUNE + BULLES + SYMBOLE QUI CHANGE ---------------- */
 
 const IntroHero = () => {
-  const [currentPole, setCurrentPole] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const poles = ["Spirit", "Santé", "Musique", "Hôtel", "Label"];
+  const variants = [
+    { label: "Plus", symbol: "+", color: "text-purple-400" },
+    { label: "Santé", symbol: "⚕", color: "text-emerald-300" },
+    { label: "Musique", symbol: "♪", color: "text-pink-300" },
+    { label: "Hôtellerie", symbol: "🏨", color: "text-amber-300" },
+    { label: "Cacao", symbol: "🍫", color: "text-orange-300" },
+  ];
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentPole((prev) => (prev + 1) % poles.length);
-    }, 2200);
-    return () => clearInterval(interval);
-  }, [poles.length]);
+    const id = setInterval(
+      () => setCurrentIndex((i) => (i + 1) % variants.length),
+      2200
+    );
+    return () => clearInterval(id);
+  }, [variants.length]);
+
+  const current = variants[currentIndex];
 
   return (
     <section
       id="top"
       className="relative flex min-h-screen items-center justify-center bg-black"
     >
-      {/* déco légère en fond */}
-      <div className="pointer-events-none absolute inset-0 opacity-30">
-        <div className="absolute -left-40 top-10 h-72 w-72 rounded-full bg-purple-800/40 blur-3xl" />
+      {/* léger glow pour que ce soit visible */}
+      <div className="pointer-events-none absolute inset-0 opacity-40">
+        <div className="absolute -left-40 top-24 h-72 w-72 rounded-full bg-purple-800/40 blur-3xl" />
         <div className="absolute bottom-0 right-0 h-72 w-72 rounded-full bg-yellow-700/30 blur-3xl" />
       </div>
 
-      <div className="relative z-10 flex max-w-6xl flex-col items-center gap-10 px-4 text-center md:flex-row md:items-center md:text-left">
-        {/* Bloc gauche : BAWON + bulle qui tourne */}
-        <div className="flex-1 flex flex-col gap-8 items-center md:items-start">
-          <div className="flex items-center gap-8">
-            {/* BAWON + bulle orbitale */}
-            <div className="relative w-40 h-40">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-3xl tracking-[0.35em] text-yellow-300 font-semibold uppercase">
-                  BAWON
-                </span>
-              </div>
-              {/* bulle qui tourne */}
-              <div className="bawon-orbit-dot absolute left-1/2 top-1/2 h-6 w-6 -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-400 shadow-[0_0_20px_rgba(168,85,247,0.9)]" />
+      <div className="relative z-10 flex flex-col items-center gap-10 px-4 text-center">
+        {/* LOGO CENTRAL */}
+        <div className="flex flex-col items-center gap-8 mt-20 md:mt-28">
+          <div className="flex flex-col md:flex-row items-center gap-10">
+            {/* BAWON */}
+            <div className="relative">
+              <span className="text-6xl md:text-7xl font-extrabold tracking-[0.25em] text-yellow-400 uppercase">
+                BAWON
+              </span>
+
+              {/* bulles translucides autour du AW */}
+              <span className="pointer-events-none absolute -bottom-4 left-1/3 h-10 w-10 rounded-full bawon-bubble bawon-bubble-1" />
+              <span className="pointer-events-none absolute -top-2 left-1/2 h-6 w-6 rounded-full bawon-bubble bawon-bubble-2" />
+              <span className="pointer-events-none absolute -bottom-6 right-1/4 h-8 w-8 rounded-full bawon-bubble bawon-bubble-3" />
             </div>
 
-            {/* Signe + et label qui change */}
-            <div className="flex flex-col items-start gap-3">
-              <span className="text-5xl font-bold text-purple-400">+</span>
-              <span className="text-xs uppercase tracking-[0.4em] text-white/70">
-                BAWON {poles[currentPole]}
+            {/* barre verticale */}
+            <div className="hidden md:block h-20 w-px bg-white/70" />
+
+            {/* SYMBOLE QUI CHANGE */}
+            <div className="flex flex-col items-center md:items-start gap-3">
+              <span
+                className={`text-5xl md:text-6xl font-bold drop-shadow ${current.color}`}
+              >
+                {current.symbol}
+              </span>
+              <span className="text-[11px] uppercase tracking-[0.4em] text-white/70">
+                BAWON {current.label}
               </span>
             </div>
           </div>
 
-          <p className="max-w-md text-sm text-white/70 md:text-base">
-            Une maison noire & or, qui se décline en pôles : spiritueux, santé,
-            musique, hôtellerie, label… Un même univers, plusieurs signes.
+          {/* TAGLINE */}
+          <p className="max-w-2xl text-base md:text-lg text-white/80 italic">
+            L’excellence haïtienne, du passé vers le futur. Un univers noir,
+            chocolat, or et violets – visible, lumineux, mais toujours
+            mystérieux.
           </p>
         </div>
 
-        {/* Bloc droit : call à scroller */}
-        <div className="flex-1 flex flex-col items-center md:items-end gap-6">
-          <p className="text-sm text-white/60 max-w-xs">
-            Faites défiler pour entrer dans l’univers BAWON+ et découvrir nos
-            pôles, nos projets et nos opportunités d’investissement.
-          </p>
+        {/* BOUTONS */}
+        <div className="flex flex-col gap-4 md:flex-row md:gap-6">
           <a
             href="#universe"
-            className="flex flex-col items-center gap-2 text-xs uppercase tracking-[0.3em] text-white/60 hover:text-white"
+            className="inline-flex items-center justify-center rounded-full bg-white px-8 py-3 text-sm font-semibold text-black hover:bg-slate-100 transition"
           >
-            <span>Entrer dans l’univers</span>
-            <span className="h-10 w-px bg-white/30" />
-            <span className="animate-bounce text-lg">↓</span>
+            Découvrir l’univers
+          </a>
+          <a
+            href="#invest"
+            className="inline-flex items-center justify-center rounded-full bg-purple-600 px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-900/60 hover:bg-purple-500 transition"
+          >
+            Investir / Soutenir
           </a>
         </div>
+
+        {/* Indicateur scroll */}
+        <a
+          href="#universe"
+          className="mt-4 flex flex-col items-center gap-2 text-xs uppercase tracking-[0.3em] text-white/60 hover:text-white"
+        >
+          <span>Faire défiler</span>
+          <span className="h-8 w-px bg-white/40" />
+          <span className="animate-bounce text-lg">⌄</span>
+        </a>
       </div>
     </section>
   );
 };
 
-/* ---------------- HERO 2 : IMAGE AVEC ÉVENTAIL / TAMBOUR ---------------- */
+/* ---------------- UNIVERS : IMAGE AVEC ÉVENTAIL / TAMBOUR ---------------- */
 
 const UniverseSplash = () => {
   return (
@@ -223,26 +176,28 @@ const UniverseSplash = () => {
           backgroundImage: "url('/images/bawon-hero-still-life.png')",
         }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black" />
+      {/* voile plus clair pour que l’image soit bien visible */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/40 to-black/80" />
 
       <div className="relative z-10 max-w-4xl px-4 text-center space-y-4">
         <p className="text-xs uppercase tracking-[0.4em] text-purple-200/80">
           L’univers BAWON+
         </p>
         <h2 className="text-3xl md:text-4xl font-semibold text-purple-100">
-          Une maison nocturne, entre tambour, éventail et verre de nuit.
+          Une maison nocturne, entre tambour, éventail, chocolat et verre de
+          nuit.
         </h2>
-        <p className="text-sm md:text-base text-white/80 max-w-2xl mx-auto">
-          Cette image est la porte d’entrée de BAWON+ : un assemblage de
-          symboles haïtiens, de matières, d’objets et de lumières qui résument
-          notre vision : luxe, profondeur, chaleur et mystique.
+        <p className="text-sm md:text-base text-white/85 max-w-2xl mx-auto">
+          Cette composition résume notre vision : un mélange de symboles
+          haïtiens, de matières, de lumière chaude et de profondeur. C’est la
+          porte d’entrée des différents pôles BAWON+.
         </p>
       </div>
     </section>
   );
 };
 
-/* ---------------- NOS PÔLES : FOND ANIMÉ + CARTES HOVER ---------------- */
+/* ---------------- NOS PÔLES ---------------- */
 
 const Poles = () => {
   const poles = [
@@ -251,36 +206,48 @@ const Poles = () => {
       short: "BAWON Spirit",
       desc: "Rhum, liqueurs et créations nocturnes signées BAWON+.",
       image: "/images/bawon-spirits-1.png",
+      color: "from-yellow-500/35 to-black",
+      border: "border-yellow-400/60",
     },
     {
       name: "Cacao",
       short: "BAWON Cacao",
       desc: "Chocolats noirs d’exception, issus d’un terroir caribéen.",
       image: "/images/bawon-chocolate.png",
+      color: "from-amber-900/55 to-black",
+      border: "border-amber-700/70",
     },
     {
       name: "Mode & Lifestyle",
       short: "BAWON Label",
       desc: "Vestiaire nocturne, tailoring et pièces de soirée.",
       image: "/images/bawon-fashion.png",
+      color: "from-purple-700/45 to-black",
+      border: "border-purple-400/70",
     },
     {
       name: "Santé & Bien-être",
       short: "BAWON Santé",
       desc: "Prévention, accompagnement et écosystème santé BAWON+.",
       image: "/images/bawon-health.png",
+      color: "from-slate-50/70 to-black",
+      border: "border-slate-100/80",
     },
     {
       name: "Hébergement & Hôtellerie",
       short: "BAWON Hôtel",
       desc: "Lieux de nuit, hospitalité, expériences immersives.",
       image: "/images/bawon-hotel.png",
+      color: "from-emerald-600/30 to-black",
+      border: "border-emerald-400/70",
     },
     {
       name: "Musique & Expériences",
       short: "BAWON Music",
       desc: "Événements, DJ sets, live et scénographies.",
       image: "/images/bawon-music.png",
+      color: "from-fuchsia-600/40 to-black",
+      border: "border-fuchsia-400/70",
     },
   ];
 
@@ -289,7 +256,7 @@ const Poles = () => {
       id="poles"
       className="relative border-t border-white/10 py-20 overflow-hidden"
     >
-      {/* fond animé simple */}
+      {/* fond animé léger */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(168,85,247,0.18),_transparent_60%),radial-gradient(circle_at_bottom,_rgba(250,204,21,0.12),_transparent_60%)]" />
 
       <div className="relative mx-auto max-w-6xl px-4">
@@ -301,8 +268,8 @@ const Poles = () => {
             Les signes de la maison BAWON+
           </h2>
           <p className="mt-3 text-sm text-white/65 max-w-xl mx-auto">
-            Chaque pôle possède sa couleur, son symbole et sa matière. Passez
-            le curseur pour révéler l’image qui lui est associée.
+            Chaque pôle possède sa couleur, sa matière et son univers. Passez
+            le curseur pour révéler l’image correspondante.
           </p>
         </div>
 
@@ -318,7 +285,9 @@ const Poles = () => {
 
 const PoleCard = ({ pole }) => {
   return (
-    <article className="group relative overflow-hidden rounded-3xl border border-white/15 bg-black/70 shadow-[0_20px_60px_rgba(0,0,0,0.9)] cursor-pointer transition-transform duration-300 hover:scale-105">
+    <article
+      className={`group relative overflow-hidden rounded-3xl border ${pole.border} bg-gradient-to-br ${pole.color} shadow-[0_20px_60px_rgba(0,0,0,0.9)] cursor-pointer transition-transform duration-300 hover:scale-105`}
+    >
       {/* Fond image qui apparaît au hover */}
       <div className="absolute inset-0">
         <div
@@ -328,17 +297,17 @@ const PoleCard = ({ pole }) => {
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       </div>
 
-      {/* Contenu texte au-dessus */}
+      {/* Contenu texte */}
       <div className="relative z-10 flex flex-col justify-between h-full px-5 pb-5 pt-6 space-y-4">
         <div className="space-y-1">
-          <p className="text-[11px] uppercase tracking-[0.35em] text-purple-200/80">
+          <p className="text-[11px] uppercase tracking-[0.35em] text-purple-50/85">
             {pole.short}
           </p>
           <h3 className="text-lg font-semibold text-white">{pole.name}</h3>
         </div>
-        <p className="text-xs text-white/75 leading-relaxed">{pole.desc}</p>
+        <p className="text-xs text-white/80 leading-relaxed">{pole.desc}</p>
 
-        <div className="flex items-center justify-between pt-2 text-[11px] text-purple-200/85">
+        <div className="flex items-center justify-between pt-2 text-[11px] text-purple-100/90">
           <span>Découvrir ce pôle</span>
           <span className="text-sm">↗</span>
         </div>
@@ -347,7 +316,7 @@ const PoleCard = ({ pole }) => {
   );
 };
 
-/* ---------------- INVESTISSEMENTS / PARTENARIATS / DONS ---------------- */
+/* ---------------- INVESTISSEMENT / PARTENARIATS / DONS ---------------- */
 
 const InvestmentsSection = () => {
   const cards = [
@@ -360,7 +329,7 @@ const InvestmentsSection = () => {
       desc: "Collaborations, co-brandings, résidences, évènements et projets qui relient d’autres marques à l’univers BAWON+.",
     },
     {
-      title: "Dons & soutien",
+      title: "Dons & mécénat",
       desc: "Soutenir la construction du projet, la mise en valeur des savoirs haïtiens et les actions à impact.",
     },
   ];
@@ -413,23 +382,23 @@ const InvestmentsSection = () => {
   );
 };
 
-/* ---------------- ACTUALITÉS / PROJETS À VENIR ---------------- */
+/* ---------------- ACTUALITÉS / PROJETS ---------------- */
 
 const NewsSection = () => {
   const items = [
     {
       tag: "Projet à venir",
-      title: "Lancement de la première collection BAWON Spirit",
-      text: "Une série limitée pensée comme un premier manifeste de la maison : matières, verre, nuit et rites revisités.",
+      title: "Première collection BAWON Spirit",
+      text: "Une série limitée pensée comme manifeste : bouteilles, matières, nuit et rites revisités.",
     },
     {
       tag: "Écosystème",
       title: "Développement du pôle BAWON Cacao",
-      text: "Travail en cours sur le sourcing, les partenariats avec des producteurs et le design des premières tablettes.",
+      text: "Travail sur le sourcing, les partenariats avec les producteurs et le design des premières tablettes.",
     },
     {
       tag: "Investissement",
-      title: "Ouverture d’un cercle d’intérêt investisseurs",
+      title: "Cercle d’intérêt investisseurs",
       text: "Un espace dédié pour les profils souhaitant suivre l’avancée du projet et les futures opportunités.",
     },
   ];
@@ -478,7 +447,7 @@ const NewsSection = () => {
   );
 };
 
-/* ---------------- CONTACT & INFOS ---------------- */
+/* ---------------- CONTACT & QUI SOMMES-NOUS ---------------- */
 
 const ContactSection = () => {
   return (
@@ -501,13 +470,13 @@ const ContactSection = () => {
         </div>
 
         <div className="grid gap-8 md:grid-cols-2">
-          {/* Formulaire simplifié */}
+          {/* Formulaire */}
           <form
             className="space-y-4 rounded-3xl border border-purple-500/40 bg-black/70 p-6 shadow-[0_18px_55px_rgba(0,0,0,0.9)]"
             onSubmit={(e) => {
               e.preventDefault();
               alert(
-                "Formulaire contact soumis (démo). Tu pourras ensuite connecter ce formulaire à un service d’e-mail."
+                "Formulaire contact soumis (démo). Tu pourras ensuite le connecter à un service d’e-mail."
               );
             }}
           >
@@ -556,8 +525,8 @@ const ContactSection = () => {
             </button>
           </form>
 
-          {/* Infos côté droit */}
-          <div className="space-y-5 text-sm text-white/75" id="about">
+          {/* Qui sommes-nous + infos */}
+          <div className="space-y-5 text-sm text-white/75">
             <h3 className="text-lg font-semibold text-purple-100">
               Qui sommes-nous ?
             </h3>
@@ -571,7 +540,7 @@ const ContactSection = () => {
               <p className="text-xs uppercase tracking-[0.25em] text-purple-200/80">
                 E-mail
               </p>
-              <p>contact@bawon-plus.com (exemple à remplacer)</p>
+              <p>contact@bawon-plus.com (à remplacer par ton vrai mail)</p>
             </div>
             <div className="space-y-2">
               <p className="text-xs uppercase tracking-[0.25em] text-purple-200/80">
@@ -614,7 +583,7 @@ const Footer = () => {
             Univers
           </a>
           <a href="#poles" className="hover:text-white">
-            Nos pôles
+            Pôles
           </a>
           <a href="#invest" className="hover:text-white">
             Investissement
@@ -631,4 +600,3 @@ const Footer = () => {
     </footer>
   );
 };
-
