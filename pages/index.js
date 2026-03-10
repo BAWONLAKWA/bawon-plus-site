@@ -64,8 +64,8 @@ const IntroHero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const variants = [
-    { label: "Plus", symbol: "+", color: "text-purple-400" },
-    { label: "Santé", symbol: "⚕", color: "text-emerald-300" },
+    { label: "Plus", symbol: "T", color: "text-purple-400" },
+    { label: "Santé", symbol: "U", color: "text-emerald-300" },
     { label: "Musique", symbol: "♪", color: "text-pink-300" },
     { label: "Hôtellerie", symbol: "🏨", color: "text-amber-300" },
     { label: "Cacao", symbol: "🍫", color: "text-orange-300" },
