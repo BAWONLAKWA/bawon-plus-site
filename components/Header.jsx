@@ -1,23 +1,5 @@
-import React from "react";
-
+import Link from "next/link";
+const links = [["Bawon", "/"], ["Financer", "/financer-mon-projet"], ["Connect", "/bawon-connect"], ["Accompagnement", "/accompagnement"], ["Actualités", "/actualites"]];
 export default function Header() {
-  return (
-    <header className="flex items-center justify-between py-4">
-      <div
-        className="text-2xl font-black tracking-widest px-4 py-2 rounded-2xl border text-white flex items-center gap-2"
-        style={{ borderColor: "#d6b26f80", background: "#150c23a0" }}
-      >
-        BAWON<span style={{ color: "#d6b26f" }}>+</span>
-      </div>
-      <nav className="hidden md:flex items-center gap-4 text-xs uppercase tracking-[0.2em] text-white/70">
-        <a href="/" className="hover:text-white">Accueil</a>
-        <a href="/services" className="hover:text-white">Services</a>
-        <a href="/investisseurs" className="hover:text-white">Investisseurs</a>
-        <a href="/partenariats" className="hover:text-white">Partenariats</a>
-        <a href="/donations" className="hover:text-white">Don</a>
-        <a href="/contact" className="hover:text-white">Contact</a>
-        <a href="/infos" className="hover:text-white">Infos</a>
-      </nav>
-    </header>
-  );
+  return <header className="sticky top-0 z-50 border-b border-white/10 bg-[#05030a]/90 backdrop-blur"><div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 md:px-6"><Link href="/" className="text-lg font-black tracking-[.22em] text-white">BAWON<span className="text-[#d6b26f]">+</span></Link><nav aria-label="Navigation principale" className="hidden items-center gap-5 text-sm text-white/70 md:flex">{links.map(([label, href]) => <Link key={href} href={href} className="hover:text-white">{label}</Link>)}</nav><Link href="/financer-mon-projet" className="rounded-full border border-[#d6b26f]/70 px-3 py-2 text-xs font-semibold text-[#f3d99d] hover:bg-[#d6b26f]/10">Financer mon projet</Link></div></header>;
 }

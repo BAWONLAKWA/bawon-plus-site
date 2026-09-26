@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -12,18 +13,18 @@ export default function Footer() {
       </p>
       <div className="flex flex-wrap gap-3 items-center">
         <span>contact@bawon.plus</span>
-        <a
+        <Link
           href="/contact"
           className="underline underline-offset-2 hover:text-white"
         >
           Formulaire de contact
-        </a>
-        <a
+        </Link>
+        <Link
           href="/infos"
           className="underline underline-offset-2 hover:text-white"
         >
           Réseaux & légal
-        </a>
+        </Link>
       </div>
     </footer>
   );
