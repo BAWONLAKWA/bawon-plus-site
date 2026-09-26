@@ -37,3 +37,9 @@ Implement the public information architecture and replace misleading demo intera
 - Replaced legacy internal footer anchors with Next.js `Link` components.
 - Tests: `npm run lint` passed with no warnings or errors; `npm run build` passed with 16 generated static routes.
 - Commit: `1a7287262c7dce2bf002672712f8a82edcef9b76` — `chore: configure linting and ignore build artifacts`.
+
+## Publication update — GitHub connector (2026-09-27)
+
+- The official ChatGPT Codex Connector was verified with `push: true` and `admin: true` on `BAWONLAKWA/bawon-plus-site`.
+- The verified local migration changes were published to `main` in two fast-forward commits: `7dd29a93e5b3927273b0a0d11c112bdae61f5093` (`feat: establish BAWON+ public foundation`) and `7c2a908a7b9acedd833c30a8211ce5371846b9ba` (`chore: lock verified dependencies`).
+- Publication did not use a password, personal access token, force-push, remote database, payment provider, or Vercel credential.
