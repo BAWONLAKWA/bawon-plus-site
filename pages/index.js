@@ -3,6 +3,7 @@ import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import OrbitingSatellites from "../components/OrbitingSatellites";
 
 const pillars = [
   ["Soutenir un projet", "Une contribution n'est pas un investissement. Aucun rendement ni capital n'est garanti.", "/soutenir"],
@@ -20,10 +21,10 @@ const conceptProjects = [
 ];
 
 const orbitItems = [
-  { label: "Financer", href: "/financer-mon-projet", position: "left-0 top-[17%]", color: "border-[#d6b26f]/70 text-[#f3d99d]" },
-  { label: "Connect", href: "/bawon-connect", position: "right-0 top-[18%]", color: "border-violet-300/60 text-violet-100" },
-  { label: "Investir", href: "/investir", position: "bottom-[14%] left-[11%]", color: "border-white/35 text-white" },
-  { label: "Accompagner", href: "/accompagnement", position: "bottom-[10%] right-[4%]", color: "border-[#d6b26f]/45 text-[#f3d99d]" },
+  { label: "Financer", href: "/financer-mon-projet", color: "border-[#d6b26f]/70 text-[#f3d99d]" },
+  { label: "Connect", href: "/bawon-connect", color: "border-violet-300/60 text-violet-100" },
+  { label: "Investir", href: "/investir", color: "border-white/35 text-white" },
+  { label: "Accompagner", href: "/accompagnement", color: "border-[#d6b26f]/45 text-[#f3d99d]" },
 ];
 
 function SectionTitle({ eyebrow, title, description }) {
@@ -42,7 +43,8 @@ function BawonOrbit({ reduceMotion }) {
       <motion.div aria-hidden="true" animate={reduceMotion ? undefined : { rotate: -360 }} transition={{ duration: 20, repeat: Infinity, ease: "linear" }} className="absolute inset-[18%] rounded-full border border-violet-300/25" style={{ transform: "rotateX(68deg)" }} />
       <motion.div aria-hidden="true" animate={reduceMotion ? undefined : { y: [0, -12, 0], opacity: [.35, .85, .35] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute left-1/2 top-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#d6b26f]/20 blur-3xl" />
       <div className="absolute left-1/2 top-1/2 flex h-32 w-32 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full border border-white/25 bg-[#09060e]/90 text-center shadow-[0_0_70px_rgba(122,60,255,.32)] backdrop-blur-xl sm:h-40 sm:w-40" style={{ transform: "translateZ(48px)" }}><span className="text-xl font-black tracking-[.12em] sm:text-2xl sm:tracking-[.15em]">BAWON<span className="text-[#d6b26f]">+</span></span><span className="mt-2 text-[8px] uppercase tracking-[.22em] text-white/55 sm:text-[9px] sm:tracking-[.28em]">Écosystème</span></div>
-      {orbitItems.map((item, index) => <motion.div key={item.label} initial={reduceMotion ? false : { opacity: 0, scale: .7 }} animate={reduceMotion ? undefined : { opacity: 1, scale: 1 }} transition={{ delay: .2 + index * .1 }} className={`absolute ${item.position}`} style={{ transform: `translateZ(${index % 2 ? 64 : 34}px)` }}><Link href={item.href} className={`block rounded-full border bg-black/70 px-2.5 py-1.5 text-[10px] font-semibold shadow-xl backdrop-blur ${item.color} transition hover:scale-110 hover:bg-white/10 sm:px-4 sm:py-2 sm:text-xs`}>{item.label}</Link></motion.div>)}
+      <OrbitingSatellites radius="clamp(122px, 36vw, 170px)" duration={16} className={reduceMotion ? "bawon-orbit-still" : ""}>{orbitItems.map((item) => <Link key={item.label} href={item.href} className={`block rounded-full border bg-black/80 px-2.5 py-1.5 text-[10px] font-semibold shadow-xl backdrop-blur ${item.color} transition hover:scale-110 hover:bg-white/10 sm:px-4 sm:py-2 sm:text-xs`}>{item.label}</Link>)}</OrbitingSatellites>
+      <OrbitingSatellites radius="clamp(76px, 23vw, 102px)" duration={10} reverse className={reduceMotion ? "bawon-orbit-still" : ""}><span className="block h-2.5 w-2.5 rounded-full bg-[#d6b26f] shadow-[0_0_18px_5px_rgba(214,178,111,.32)]" /><span className="block h-2 w-2 rounded-full bg-violet-200 shadow-[0_0_16px_5px_rgba(196,181,253,.25)]" /><span className="block h-2 w-2 rounded-full bg-white shadow-[0_0_16px_5px_rgba(255,255,255,.3)]" /></OrbitingSatellites>
       <span aria-hidden="true" className="absolute left-[26%] top-[14%] h-2 w-2 rounded-full bg-[#d6b26f] shadow-[0_0_18px_5px_rgba(214,178,111,.32)]" /><span aria-hidden="true" className="absolute right-[18%] top-[42%] h-1.5 w-1.5 rounded-full bg-violet-200 shadow-[0_0_16px_5px_rgba(196,181,253,.25)]" /><span aria-hidden="true" className="absolute bottom-[28%] left-[44%] h-1.5 w-1.5 rounded-full bg-white shadow-[0_0_16px_5px_rgba(255,255,255,.3)]" />
     </div>
   </div>;
