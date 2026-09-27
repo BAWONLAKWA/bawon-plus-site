@@ -14,6 +14,14 @@ body {
 .bawon-card { @apply rounded-2xl border border-white/10 bg-white/[.035] p-6 transition hover:border-white/25 hover:bg-white/[.055] focus:outline-none focus:ring-2 focus:ring-[#d6b26f]; }
 @media (prefers-reduced-motion: reduce) { *, ::before, ::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }
 
+@keyframes bawon-orbit {
+  from { transform: translate(-50%, -50%) rotate(var(--orbit-angle)) translateX(var(--orbit-radius)) rotate(calc(-1 * var(--orbit-angle))); }
+  to { transform: translate(-50%, -50%) rotate(calc(var(--orbit-angle) + 360deg)) translateX(var(--orbit-radius)) rotate(calc(-1 * (var(--orbit-angle) + 360deg))); }
+}
+.bawon-orbit-satellite { animation: bawon-orbit var(--orbit-duration) linear infinite; left: 50%; position: absolute; top: 50%; transform-origin: center; z-index: 20; }
+.bawon-orbit-reverse { animation-direction: reverse; }
+.bawon-orbit-still { animation-play-state: paused; }
+
 ::-webkit-scrollbar {
   width: 8px;
 }
