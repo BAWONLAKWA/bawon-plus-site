@@ -43,3 +43,11 @@ Implement the public information architecture and replace misleading demo intera
 - The official ChatGPT Codex Connector was verified with `push: true` and `admin: true` on `BAWONLAKWA/bawon-plus-site`.
 - The verified local migration changes were published to `main` in two fast-forward commits: `7dd29a93e5b3927273b0a0d11c112bdae61f5093` (`feat: establish BAWON+ public foundation`) and `7c2a908a7b9acedd833c30a8211ce5371846b9ba` (`chore: lock verified dependencies`).
 - Publication did not use a password, personal access token, force-push, remote database, payment provider, or Vercel credential.
+
+## Homepage visual revision — BAWON universe and concept preview (2026-09-27)
+
+- Restored the existing `bawon-hero-still-life.png` as a tall, scroll-revealed visual section after the black hero. A dark overlay keeps the content readable and the overall identity predominantly black.
+- Added a premium investment-platform preview with three clearly labelled fictional concept dossiers and a sourcing-to-reporting process strip. It is explicitly marked as a design preview and does not represent real projects, offers, returns, partners or investments.
+- Tests: `npm run lint` passed with no warnings or errors; `npm run build` passed with 16 generated static routes.
+- Published commit: `e9bac7b0fb616193bd2cc14289986030685764da` — `feat: restore BAWON visual universe and investment preview`.
+- Deployment: Vercel production homepage reloaded successfully with the restored visual section and concept preview.
