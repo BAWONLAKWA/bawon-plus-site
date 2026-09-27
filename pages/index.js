@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -18,8 +19,33 @@ const conceptProjects = [
   { sector: "Diaspora", title: "Connexion PME & marchés", country: "Haïti ↔ international", stage: "Exemple de dossier", tone: "from-[#d6b26f]/20 via-[#17130d] to-black" },
 ];
 
+const orbitItems = [
+  { label: "Financer", href: "/financer-mon-projet", position: "left-0 top-[17%]", color: "border-[#d6b26f]/70 text-[#f3d99d]" },
+  { label: "Connect", href: "/bawon-connect", position: "right-0 top-[18%]", color: "border-violet-300/60 text-violet-100" },
+  { label: "Investir", href: "/investir", position: "bottom-[14%] left-[11%]", color: "border-white/35 text-white" },
+  { label: "Accompagner", href: "/accompagnement", position: "bottom-[10%] right-[4%]", color: "border-[#d6b26f]/45 text-[#f3d99d]" },
+];
+
 function SectionTitle({ eyebrow, title, description }) {
   return <div className="max-w-3xl"><p className="bawon-eyebrow">{eyebrow}</p><h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">{title}</h2>{description && <p className="mt-4 text-base leading-7 text-white/70">{description}</p>}</div>;
+}
+
+function BawonOrbit({ reduceMotion }) {
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const move = (event) => {
+    const bounds = event.currentTarget.getBoundingClientRect();
+    setTilt({ x: ((event.clientY - bounds.top) / bounds.height - .5) * -10, y: ((event.clientX - bounds.left) / bounds.width - .5) * 12 });
+  };
+  return <div className="relative hidden min-h-[520px] items-center justify-center lg:flex" style={{ perspective: "1200px" }} onMouseMove={move} onMouseLeave={() => setTilt({ x: 0, y: 0 })}>
+    <div className="relative h-[440px] w-[440px] transition-transform duration-500 ease-out" style={{ transformStyle: "preserve-3d", transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)` }}>
+      <motion.div aria-hidden="true" animate={reduceMotion ? undefined : { rotate: 360 }} transition={{ duration: 28, repeat: Infinity, ease: "linear" }} className="absolute inset-[7%] rounded-full border border-[#d6b26f]/35" />
+      <motion.div aria-hidden="true" animate={reduceMotion ? undefined : { rotate: -360 }} transition={{ duration: 20, repeat: Infinity, ease: "linear" }} className="absolute inset-[18%] rounded-full border border-violet-300/25" style={{ transform: "rotateX(68deg)" }} />
+      <motion.div aria-hidden="true" animate={reduceMotion ? undefined : { y: [0, -12, 0], opacity: [.35, .85, .35] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute left-1/2 top-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#d6b26f]/20 blur-3xl" />
+      <div className="absolute left-1/2 top-1/2 flex h-40 w-40 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full border border-white/25 bg-[#09060e]/90 text-center shadow-[0_0_70px_rgba(122,60,255,.32)] backdrop-blur-xl" style={{ transform: "translateZ(48px)" }}><span className="text-2xl font-black tracking-[.15em]">BAWON<span className="text-[#d6b26f]">+</span></span><span className="mt-2 text-[9px] uppercase tracking-[.28em] text-white/55">Écosystème</span></div>
+      {orbitItems.map((item, index) => <motion.div key={item.label} initial={reduceMotion ? false : { opacity: 0, scale: .7 }} animate={reduceMotion ? undefined : { opacity: 1, scale: 1 }} transition={{ delay: .2 + index * .1 }} className={`absolute ${item.position}`} style={{ transform: `translateZ(${index % 2 ? 64 : 34}px)` }}><Link href={item.href} className={`block rounded-full border bg-black/70 px-4 py-2 text-xs font-semibold shadow-xl backdrop-blur ${item.color} transition hover:scale-110 hover:bg-white/10`}>{item.label}</Link></motion.div>)}
+      <span aria-hidden="true" className="absolute left-[26%] top-[14%] h-2 w-2 rounded-full bg-[#d6b26f] shadow-[0_0_18px_5px_rgba(214,178,111,.32)]" /><span aria-hidden="true" className="absolute right-[18%] top-[42%] h-1.5 w-1.5 rounded-full bg-violet-200 shadow-[0_0_16px_5px_rgba(196,181,253,.25)]" /><span aria-hidden="true" className="absolute bottom-[28%] left-[44%] h-1.5 w-1.5 rounded-full bg-white shadow-[0_0_16px_5px_rgba(255,255,255,.3)]" />
+    </div>
+  </div>;
 }
 
 export default function HomePage() {
@@ -29,14 +55,14 @@ export default function HomePage() {
     <section className="relative isolate overflow-hidden border-b border-white/10 bg-[#05030a]">
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_14%_22%,rgba(97,46,174,.38),transparent_28%),radial-gradient(circle_at_88%_78%,rgba(214,178,111,.16),transparent_24%)]" />
       <motion.div aria-hidden="true" animate={reduceMotion ? undefined : { y: [0, -18, 0], opacity: [.3, .72, .3] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="pointer-events-none absolute right-[-8rem] top-[-8rem] -z-10 h-80 w-80 rounded-full bg-[#d6b26f]/20 blur-3xl" />
-      <div className="mx-auto grid min-h-[680px] max-w-6xl items-end px-4 pb-20 pt-36 md:px-6 md:pb-28"><div className="max-w-3xl">
+      <div className="mx-auto grid min-h-[680px] max-w-6xl items-end px-4 pb-20 pt-36 md:px-6 md:pb-28 lg:grid-cols-[1fr_.82fr]"><div className="max-w-3xl">
         <p className="mb-6 text-xs font-medium uppercase tracking-[.28em] text-[#d6b26f]">Haïti connecté au monde</p>
         <h1 className="text-5xl font-black tracking-[-.06em] text-white sm:text-7xl md:text-8xl">BAWON<span className="text-[#d6b26f]">+</span></h1>
         <p className="mt-7 max-w-2xl text-xl font-semibold leading-relaxed text-white sm:text-2xl">FINANCER. INVESTIR. ACCOMPAGNER. CONNECTER.</p>
         <p className="mt-5 max-w-2xl text-base leading-7 text-white/75">Une plateforme pensée pour faire émerger, structurer et relier des projets haïtiens, caribéens et internationaux — avec une exigence financière, humaine et opérationnelle.</p>
         <div className="mt-9 flex flex-col gap-3 sm:flex-row"><Link href="/accompagnement" className="bawon-button-primary">Découvrir Bawon</Link><Link href="/financer-mon-projet" className="bawon-button-secondary">Financer mon projet</Link></div>
         <div className="mt-6 flex gap-5 text-sm text-white/75"><Link href="/investir" className="hover:text-[#d6b26f]">Explorer l'investissement →</Link><a href="#vision" className="hover:text-[#d6b26f]">Découvrir l'univers ↓</a></div>
-      </div></div>
+      </div><BawonOrbit reduceMotion={reduceMotion} /></div>
     </section>
     <section id="vision" className="relative isolate min-h-[760px] overflow-hidden border-b border-white/10">
       <div className="absolute inset-0 -z-20 bg-[url('/images/bawon-hero-still-life.png')] bg-cover bg-center" />
@@ -48,7 +74,7 @@ export default function HomePage() {
     <section id="apercu-investissement" className="relative border-b border-white/10 bg-[#08050e] py-20 md:py-28">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_82%_15%,rgba(104,55,184,.22),transparent_28%),radial-gradient(circle_at_16%_88%,rgba(214,178,111,.12),transparent_23%)]" />
       <div className="relative mx-auto max-w-6xl px-4 md:px-6"><div className="flex flex-col justify-between gap-6 md:flex-row md:items-end"><SectionTitle eyebrow="Aperçu plateforme" title="L'investissement, présenté avec clarté." description="Une prévisualisation du futur espace opportunités : sélection, documentation, suivi et transparence. Les cartes ci-dessous sont fictives et servent uniquement à montrer le design." /><span className="w-fit rounded-full border border-[#d6b26f]/40 bg-[#d6b26f]/10 px-3 py-1.5 text-xs font-semibold text-[#f3d99d]">MODE CONCEPT · DONNÉES FICTIVES</span></div>
-        <div className="mt-10 grid gap-4 lg:grid-cols-3">{conceptProjects.map((project, index) => <motion.article key={project.title} initial={reduceMotion ? false : { opacity: 0, y: 18 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: .25 }} transition={{ duration: .45, delay: index * .08 }} className={`group min-h-[330px] rounded-3xl border border-white/10 bg-gradient-to-b ${project.tone} p-6 transition hover:-translate-y-1 hover:border-[#d6b26f]/45`}><div className="flex items-center justify-between gap-3"><span className="text-xs font-semibold uppercase tracking-[.2em] text-[#f3d99d]">{project.sector}</span><span className="rounded-full border border-white/15 bg-black/25 px-2.5 py-1 text-[10px] font-medium text-white/75">{project.stage}</span></div><div className="mt-24"><p className="text-sm text-white/55">{project.country}</p><h3 className="mt-2 text-2xl font-semibold">{project.title}</h3><div className="mt-6 flex items-center justify-between border-t border-white/10 pt-4 text-sm"><span className="text-white/60">Dossier en préparation</span><span className="text-[#f3d99d]">Voir le format →</span></div></div></motion.article>)}</div>
+        <div className="mt-10 grid gap-4 lg:grid-cols-3">{conceptProjects.map((project, index) => <motion.article key={project.title} initial={reduceMotion ? false : { opacity: 0, y: 18 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} whileHover={reduceMotion ? undefined : { y: -10, rotateX: 3, rotateY: index === 1 ? 0 : index === 0 ? -2 : 2 }} viewport={{ once: true, amount: .25 }} transition={{ duration: .45, delay: index * .08 }} style={{ transformStyle: "preserve-3d" }} className={`group min-h-[330px] rounded-3xl border border-white/10 bg-gradient-to-b ${project.tone} p-6 transition hover:border-[#d6b26f]/45`}><div className="flex items-center justify-between gap-3"><span className="text-xs font-semibold uppercase tracking-[.2em] text-[#f3d99d]">{project.sector}</span><span className="rounded-full border border-white/15 bg-black/25 px-2.5 py-1 text-[10px] font-medium text-white/75">{project.stage}</span></div><div className="mt-24"><p className="text-sm text-white/55">{project.country}</p><h3 className="mt-2 text-2xl font-semibold">{project.title}</h3><div className="mt-6 flex items-center justify-between border-t border-white/10 pt-4 text-sm"><span className="text-white/60">Dossier en préparation</span><span className="text-[#f3d99d]">Voir le format →</span></div></div></motion.article>)}</div>
         <div className="mt-5 grid gap-3 rounded-2xl border border-white/10 bg-white/[.035] p-5 text-sm text-white/65 md:grid-cols-4"><span><b className="block text-white">01 · Sourcing</b>Projet identifié</span><span><b className="block text-white">02 · Analyse</b>Données et risques</span><span><b className="block text-white">03 · Comité</b>Décision documentée</span><span><b className="block text-white">04 · Suivi</b>Étapes et reporting</span></div>
       </div>
     </section>
