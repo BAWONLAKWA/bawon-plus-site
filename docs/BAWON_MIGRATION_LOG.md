@@ -60,3 +60,11 @@ Implement the public information architecture and replace misleading demo intera
 - Tests: `npm run lint` passed with no warnings or errors; `npm run build` passed with 16 generated static routes.
 - Published commit: `72d19fb103355584b50668895ccf22a52a549476` — `feat: add interactive BAWON ecosystem motion`.
 - Deployment: Vercel production homepage reloaded successfully and visually checked.
+
+## Homepage motion revision — licensed orbiting satellites (2026-09-27)
+
+- Replaced the visually ambiguous rotating circles with moving labelled satellites and counter-orbiting light points. The mobile layout uses the same animation in a compact 355 px scene.
+- Reused an adapted component from Magic UI under MIT, pinned to commit `d7207e5692d14c00dceafa8488d6d01f197fa0e4`. Licence notice and source inventory were added to the repository.
+- `motion-primitives-website` was not copied because no explicit licence file was found. `react-three-next` was inspected under MIT but deferred: a full Three.js runtime is unnecessary for this lightweight orbital feature.
+- Tests: `npm run lint` passed with no warnings or errors; `npm run build` passed with 16 generated static routes.
+- Deployment: production was visually checked twice, three seconds apart, and satellites changed position as expected.
