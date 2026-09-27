@@ -68,3 +68,11 @@ Implement the public information architecture and replace misleading demo intera
 - `motion-primitives-website` was not copied because no explicit licence file was found. `react-three-next` was inspected under MIT but deferred: a full Three.js runtime is unnecessary for this lightweight orbital feature.
 - Tests: `npm run lint` passed with no warnings or errors; `npm run build` passed with 16 generated static routes.
 - Deployment: production was visually checked twice, three seconds apart, and satellites changed position as expected.
+
+## Public application prototype — workflow spaces (2026-09-27)
+
+- Audited all ten user-requested repositories before reuse. MIT workflows/patterns from CFP-MVP and Supabase Partner Gallery informed the new interface; no unlicensed code was copied. The detailed decision table is in `docs/OPEN_SOURCE_INVENTORY.md`.
+- Replaced empty public route stubs with distinct demonstration spaces: a guided project intake with local draft feedback, investor selection, Bawon Connect board, accompaniment flow, partner directory and activity feed.
+- Demo data is centralized in `data/bawonDemo.js` and labelled on every route. It must not be represented as real projects, partners, funding, activity or investment opportunity.
+- Corrected the BAWON+ nucleus centering in the 3D scene and increased the visibility/positioning of the existing visual background.
+- Tests: `npm run lint` passed with no warnings or errors; `npm run build` passed with 16 generated static routes.
