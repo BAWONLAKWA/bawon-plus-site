@@ -51,3 +51,12 @@ Implement the public information architecture and replace misleading demo intera
 - Tests: `npm run lint` passed with no warnings or errors; `npm run build` passed with 16 generated static routes.
 - Published commit: `e9bac7b0fb616193bd2cc14289986030685764da` — `feat: restore BAWON visual universe and investment preview`.
 - Deployment: Vercel production homepage reloaded successfully with the restored visual section and concept preview.
+
+## Homepage motion revision — interactive BAWON ecosystem (2026-09-27)
+
+- Added an interactive CSS 3D ecosystem in the desktop hero: rotating orbital rings, depth, glowing nodes, hover tilt and direct links to the four core journeys.
+- Added depth movement to the three concept dossier cards. No WebGL or Three.js is loaded, preserving the small public-page bundle and mobile fallback.
+- Accessibility: all orbit actions remain standard links; `prefers-reduced-motion` disables continuous movement and entrance animation.
+- Tests: `npm run lint` passed with no warnings or errors; `npm run build` passed with 16 generated static routes.
+- Published commit: `72d19fb103355584b50668895ccf22a52a549476` — `feat: add interactive BAWON ecosystem motion`.
+- Deployment: Vercel production homepage reloaded successfully and visually checked.
