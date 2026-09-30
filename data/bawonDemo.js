@@ -51,4 +51,23 @@ export const ecosystemSpaces = {
     metrics: [["3", "axes de production"], ["6", "jalons opérationnels"], ["2", "scénarios logistiques"]],
     cards: [["Atelier pilote", "Capacité", "Étude des équipements, volumes et standards qualité."], ["Chaîne de valeur", "Transformation", "Sourcing, emballage, stockage et traçabilité."], ["Distribution", "Logistique", "Parcours local, régional et international à comparer."]],
   },
+  "bawon-tech": {
+    label: "BAWON Tech", eyebrow: "Innovation · plateformes · données", image: "/images/bawon-earth-network.webp", headline: "Des outils utiles, pensés depuis Haïti vers le monde.", intro: "Un espace pour les futures plateformes, outils de connexion, services numériques et innovations BAWON.", metrics: [["3", "produits numériques à cadrer"], ["2", "cas d’usage prioritaires"], ["1", "réseau d’innovation à structurer"]], cards: [["Bawon Connect", "Plateforme", "Mise en relation structurée entre besoins et solutions."], ["Données & suivi", "Outils", "Tableaux de bord, documentation et pilotage."], ["Innovation locale", "Écosystème", "Repérage de solutions haïtiennes à faire connaître."]],
+  },
+  "bawon-sante": {
+    label: "BAWON Santé", eyebrow: "Prévention · accès · bien-être", image: "/images/bawon-earth-network.webp", headline: "Faire grandir des initiatives utiles au bien-être.", intro: "Un espace pour les projets santé, prévention, distribution responsable et partenariats d’impact.", metrics: [["3", "axes d’impact"], ["4", "étapes de qualification"], ["0", "programme ouvert"]], cards: [["Prévention", "Sensibilisation", "Formats d’information accessibles et ancrés localement."], ["Accès", "Partenariats", "Réseaux et solutions à qualifier avec les professionnels habilités."], ["Bien-être", "Innovation", "Initiatives responsables à étudier avec les acteurs concernés."]],
+  },
+  "bawon-creatif": {
+    label: "BAWON Créatif", eyebrow: "Culture · image · création", image: "/images/demo/bawon-cuvee-demo.jpg", headline: "Faire rayonner les histoires, les talents et les marques.", intro: "Un espace pour la photographie, la direction artistique, le contenu, la musique et les collaborations culturelles BAWON.", metrics: [["5", "formats créatifs"], ["3", "collaborations à imaginer"], ["1", "univers de marque"]], cards: [["Studio BAWON", "Image", "Photographie, campagnes et direction artistique."], ["Label & contenu", "Culture", "Musique, récit et formats éditoriaux."], ["Collaborations", "Création", "Projets communs avec des talents et marques sélectionnés."]],
+  },
+  "bawon-hospitality": {
+    label: "BAWON Hospitality", eyebrow: "Accueil · tourisme · expériences", image: "/images/demo/bawon-spirit-demo.jpg", headline: "Créer des expériences qui font découvrir Haïti autrement.", intro: "Un espace pour l’hospitalité, le tourisme culturel, les événements et les collaborations d’accueil BAWON.", metrics: [["3", "formats d’expérience"], ["2", "territoires à explorer"], ["4", "jalons de préparation"]], cards: [["Expériences BAWON", "Événementiel", "Moments culturels, dégustations et rencontres."], ["Hospitalité", "Accueil", "Partenariats avec lieux et professionnels qualifiés."], ["Tourisme culturel", "Découverte", "Parcours responsables autour des cultures haïtiennes."]],
+  },
 };
+
+export const referenceProfiles = [
+  { name: "Atelier Finance Caraïbes", category: "Conseil financier", relationship: "Partenaire · démo", summary: "Profil de démonstration : structuration financière, prévisionnels et préparation de dossiers.", status: "À qualifier" },
+  { name: "Lakwa Studio", category: "Création & image", relationship: "Entreprise accompagnée · démo", summary: "Profil de démonstration : direction artistique, image de marque et contenus culturels.", status: "À documenter" },
+  { name: "Nord Export Lab", category: "Distribution", relationship: "Partenaire commercial · démo", summary: "Profil de démonstration : préparation des réseaux de distribution et accès marché.", status: "À qualifier" },
+  { name: "Soley Kominotè", category: "Énergie & impact", relationship: "Projet suivi · démo", summary: "Profil de démonstration : initiative locale avec dossier, jalons et besoins identifiés.", status: "En revue" },
+];
