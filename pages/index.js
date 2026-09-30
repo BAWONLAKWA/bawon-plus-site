@@ -53,9 +53,9 @@ function BawonOrbit({ reduceMotion }) {
 function CinematicIntro({ onEnter, reduceMotion }) {
   const poles = [
     ["BAWON Finance", "/investir", "Financer · Investir · Connecter"],
-    ["BAWON Produits", "#vision", "Marques, objets et créations"],
-    ["BAWON Boissons", "#vision", "Spiritueux et expériences"],
-    ["BAWON Industrie", "#vision", "Production et transformation"],
+    ["BAWON Produits", "/bawon-produits", "Marques, objets et créations"],
+    ["BAWON Boissons", "/bawon-boissons", "Spiritueux et expériences"],
+    ["BAWON Industrie", "/bawon-industrie", "Production et transformation"],
   ];
   return <main className="min-h-screen overflow-hidden bg-[#05030a] text-white">
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 py-10">
