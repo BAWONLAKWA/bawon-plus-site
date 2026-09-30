@@ -53,8 +53,7 @@ function BawonOrbit({ reduceMotion }) {
 function CinematicIntro({ onEnter, reduceMotion }) {
   const poles = [
     ["BAWON Finance", "/investir", "Financer · Investir · Connecter"],
-    ["BAWON Produits", "/bawon-produits", "Marques, objets et créations"],
-    ["BAWON Boissons", "/bawon-boissons", "Spiritueux et expériences"],
+    ["BAWON Produits & Alimentation", "/bawon-produits", "Boissons, cacao, objets et créations"],
     ["BAWON Industrie", "/bawon-industrie", "Production et transformation"],
     ["BAWON Tech", "/bawon-tech", "Solutions, plateformes et innovation"],
     ["BAWON Santé", "/bawon-sante", "Prévention, accès et bien-être"],
@@ -78,10 +77,9 @@ function CinematicIntro({ onEnter, reduceMotion }) {
 function EcosystemMap({ onOpenSite, reduceMotion }) {
   const poles = [
     ["BAWON Finance", "/investir", "Financement · investissement · partenaires", "bawon-map-finance"],
-    ["BAWON Produits", "/bawon-produits", "Marques, objets et créations", "bawon-map-products"],
-    ["BAWON Boissons", "/bawon-boissons", "Spiritueux et expériences", "bawon-map-drinks"],
+    ["BAWON Produits & Alimentation", "/bawon-produits", "Boissons, cacao, objets et créations", "bawon-map-products"],
     ["BAWON Industrie", "/bawon-industrie", "Production et transformation", "bawon-map-industry"],
-    ["BAWON Tech", "/bawon-tech", "Solutions et innovation", "bawon-map-tech"],
+    ["BAWON Tech", "/bawon-tech", "Solutions et innovation", "bawon-map-drinks"],
     ["BAWON Santé", "/bawon-sante", "Prévention et bien-être", "bawon-map-health"],
     ["BAWON Créatif", "/bawon-creatif", "Culture, image et contenus", "bawon-map-creative"],
     ["BAWON Hospitality", "/bawon-hospitality", "Accueil et expériences", "bawon-map-hospitality"],
