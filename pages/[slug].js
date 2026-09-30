@@ -4,11 +4,11 @@ import Layout from "../components/Layout";
 import { demoFundingSummary, demoPartners, demoProjects, demoUpdates, ecosystemSpaces, referenceProfiles } from "../data/bawonDemo";
 
 const copy = {
-  "financer-mon-projet": ["Financer mon projet", "Dossier guidé", "Prépare ton dossier, sauvegarde une version de démonstration et découvre le parcours de revue BAWON+."],
+  "financer-mon-projet": ["Financer mon projet", "Financement progressif", "Présente un besoin concret. BAWON+ étudie le projet, le niveau de préparation et le type d’appui utile avant toute décision."],
   soutenir: ["Soutenir un projet", "Contribution encadrée", "Aucune collecte n'est ouverte : voici le format que prendra une campagne clairement documentée."],
-  investir: ["Investir", "Opportunités en préparation", "Aucune opportunité réelle n'est ouverte. Cette interface montre le futur format de documentation et de sélection."],
-  "bawon-connect": ["Bawon Connect", "Besoin ↔ solution", "Un espace de mise en relation structuré, sans marketplace entre particuliers."],
-  accompagnement: ["Accompagnement Bawon", "De l'idée au dossier solide", "Diagnostic, stratégie, prévisionnel, préparation investisseurs et développement international."],
+  investir: ["BAWON+ Finance", "Investir et prendre part", "Aucune opportunité réelle n'est ouverte. Cet espace présente le futur cadre de sélection, de documentation et de prise de participation BAWON+."],
+  "bawon-connect": ["Bawon Connect", "Le réseau qui accompagne le capital", "Un espace de mise en relation entre projets sélectionnés, experts, partenaires commerciaux et investisseurs qualifiés."],
+  accompagnement: ["Accompagnement BAWON+", "Avant l’argent : rendre le projet défendable", "Diagnostic, stratégie, prévisionnel, préparation investisseurs et développement international."],
   partenaires: ["Nos partenaires", "Répertoire qualifié", "Les profils ci-dessous sont des exemples d'interface ; aucun partenariat réel n'est revendiqué."],
   actualites: ["Actualités", "Activité et suivi", "Aperçu de la future activité BAWON+, distinct des actualités vérifiées qui seront publiées ultérieurement."],
   "bawon-produits": ["BAWON Produits & Alimentation", "Produits, alimentation & culture", "Le pôle qui réunit les boissons, cacao, objets, textile, collections et développements de marque BAWON."],
