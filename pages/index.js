@@ -50,8 +50,42 @@ function BawonOrbit({ reduceMotion }) {
   </div>;
 }
 
+function CinematicIntro({ onEnter, reduceMotion }) {
+  const poles = [
+    ["BAWON Finance", "/investir", "Financer · Investir · Connecter"],
+    ["BAWON Produits", "#vision", "Marques, objets et créations"],
+    ["BAWON Boissons", "#vision", "Spiritueux et expériences"],
+    ["BAWON Industrie", "#vision", "Production et transformation"],
+  ];
+  return <main className="min-h-screen overflow-hidden bg-[#05030a] text-white">
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 py-10">
+      <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_50%_43%,rgba(104,55,184,.28),transparent_24%),radial-gradient(circle_at_74%_70%,rgba(214,178,111,.14),transparent_29%),linear-gradient(135deg,#05030a_10%,#120d1b_50%,#05030a_100%)]" />
+      <div aria-hidden="true" className={`bawon-intro-grain absolute inset-0 ${reduceMotion ? "bawon-orbit-still" : ""}`} />
+      <motion.div initial={reduceMotion ? false : { opacity: 0, scale: .94 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: .9 }} className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-10 lg:grid-cols-[.88fr_1.12fr]">
+        <div className="order-2 text-center lg:order-1 lg:text-left"><p className="text-xs font-medium uppercase tracking-[.34em] text-[#d6b26f]">Haïti · Caraïbes · Monde</p><h1 className="mt-5 text-5xl font-black tracking-[-.065em] sm:text-7xl">BAWON<span className="text-[#d6b26f]">+</span></h1><p className="mx-auto mt-5 max-w-md text-lg leading-8 text-white/75 lg:mx-0">Un écosystème vivant où se rencontrent création, production, finance et connexions internationales.</p><button type="button" onClick={onEnter} className="mt-8 rounded-full border border-[#d6b26f]/70 bg-[#d6b26f]/10 px-6 py-3 text-sm font-semibold text-[#f3d99d] transition hover:scale-105 hover:bg-[#d6b26f]/20">Entrer dans l’écosystème <span aria-hidden="true">→</span></button><p className="mt-4 text-xs text-white/45">Séquence d’ouverture interactive · appuie pour continuer</p></div>
+        <div className="order-1 flex justify-center lg:order-2"><div className={`bawon-globe ${reduceMotion ? "bawon-globe-still" : ""}`} aria-label="Globe conceptuel reliant Haïti au monde"><div className="bawon-globe-grid" /><div className="bawon-globe-land bawon-globe-land-one" /><div className="bawon-globe-land bawon-globe-land-two" /><span className="bawon-globe-point bawon-globe-haiti">HAÏTI</span><span className="bawon-globe-point bawon-globe-america">USA</span><span className="bawon-globe-point bawon-globe-canada">CANADA</span><span className="bawon-globe-point bawon-globe-france">FRANCE</span><span className="bawon-globe-point bawon-globe-africa">AFRIQUE</span><i className="bawon-globe-arc bawon-globe-arc-one" /><i className="bawon-globe-arc bawon-globe-arc-two" /><i className="bawon-globe-arc bawon-globe-arc-three" /></div></div>
+      </motion.div>
+      <div className="absolute bottom-7 left-1/2 z-10 -translate-x-1/2 text-center text-[10px] uppercase tracking-[.26em] text-white/35">La vision se déploie</div>
+    </section>
+    <section id="ecosystem" className="relative border-t border-white/10 bg-[#08050e] px-4 py-20"><div className="mx-auto max-w-6xl"><div className="text-center"><p className="bawon-eyebrow">La carte BAWON</p><h2 className="mt-3 text-3xl font-bold sm:text-5xl">Un groupe. Des pôles connectés.</h2><p className="mx-auto mt-5 max-w-2xl leading-7 text-white/70">Chaque pôle possède son univers. BAWON Finance organise le financement, l’investissement, l’accompagnement et les partenariats.</p></div><div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">{poles.map(([title, href, description], index) => <Link key={title} href={href} className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[.035] p-6 transition hover:-translate-y-2 hover:border-[#d6b26f]/55"><span className="text-xs text-[#d6b26f]">0{index + 1}</span><h3 className="mt-14 text-2xl font-semibold group-hover:text-[#f3d99d]">{title}</h3><p className="mt-3 text-sm leading-6 text-white/60">{description}</p><span className="mt-7 block text-sm text-white/80">Explorer →</span></Link>)}</div><div className="mt-12 text-center"><button type="button" onClick={onEnter} className="bawon-button-primary">Accéder au site BAWON</button></div></div></section>
+  </main>;
+}
+
+function EcosystemMap({ onOpenSite, reduceMotion }) {
+  const poles = [
+    ["BAWON Finance", "/investir", "Financement · investissement · partenaires", "bawon-map-finance"],
+    ["BAWON Produits", "/bawon-produits", "Marques, objets et créations", "bawon-map-products"],
+    ["BAWON Boissons", "/bawon-boissons", "Spiritueux et expériences", "bawon-map-drinks"],
+    ["BAWON Industrie", "/bawon-industrie", "Production et transformation", "bawon-map-industry"],
+  ];
+  return <main className="min-h-screen overflow-hidden bg-[#05030a] text-white"><section className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 py-20"><div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(104,55,184,.25),transparent_24%),radial-gradient(circle_at_50%_75%,rgba(214,178,111,.12),transparent_30%)]" /><div className="relative z-10 mx-auto w-full max-w-6xl"><div className="mb-10 text-center"><p className="bawon-eyebrow">Carte interactive</p><h1 className="mt-3 text-3xl font-bold sm:text-5xl">L’écosystème BAWON</h1><p className="mx-auto mt-4 max-w-xl text-sm leading-6 text-white/65">Choisis un pôle pour entrer dans son espace. BAWON Finance concentre les dossiers, les chiffres et les parcours de financement.</p></div><div className={`bawon-ecosystem-map ${reduceMotion ? "bawon-map-still" : ""}`}><div aria-hidden="true" className="bawon-map-ring bawon-map-ring-one" /><div aria-hidden="true" className="bawon-map-ring bawon-map-ring-two" /><button type="button" onClick={onOpenSite} className="bawon-map-core"><span className="text-2xl font-black tracking-[.14em] sm:text-3xl">BAWON<span className="text-[#d6b26f]">+</span></span><small>Le groupe</small></button>{poles.map(([title, href, description, position]) => <Link key={title} href={href} className={`bawon-map-pole ${position}`}><span className="text-[10px] uppercase tracking-[.17em] text-[#d6b26f]">Pôle</span><strong>{title}</strong><small>{description}</small><i>Entrer →</i></Link>)}</div><p className="mt-8 text-center text-xs text-white/45">Les lignes et le globe sont une visualisation conceptuelle de l’écosystème.</p></div></section></main>;
+}
+
 export default function HomePage() {
   const reduceMotion = useReducedMotion();
+  const [view, setView] = useState("intro");
+  if (view === "intro") return <CinematicIntro reduceMotion={reduceMotion} onEnter={() => { setView("ecosystem"); window.scrollTo({ top: 0, behavior: "smooth" }); }} />;
+  if (view === "ecosystem") return <EcosystemMap reduceMotion={reduceMotion} onOpenSite={() => { setView("site"); window.scrollTo({ top: 0, behavior: "smooth" }); }} />;
   return <main className="min-h-screen overflow-hidden bg-[#05030a] text-white">
     <Header />
     <section className="relative isolate overflow-hidden border-b border-white/10 bg-[#05030a]">
