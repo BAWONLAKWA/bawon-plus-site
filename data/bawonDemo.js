@@ -25,13 +25,13 @@ export const demoUpdates = [
 
 export const ecosystemSpaces = {
   "bawon-produits": {
-    label: "BAWON Produits",
-    eyebrow: "Marques · objets · culture",
+    label: "BAWON Produits & Alimentation",
+    eyebrow: "Alimentation · boissons · objets · culture",
     image: "/images/demo/bawon-cuvee-demo.jpg",
-    headline: "Des objets qui racontent une origine.",
-    intro: "Un espace de démonstration pour penser les collections BAWON : pièces culturelles, textile, cadeaux, collaborations et éditions limitées.",
-    metrics: [["4", "collections en conception"], ["12", "références à documenter"], ["3", "partenaires créatifs à qualifier"]],
-    cards: [["Collection Lakwa", "Textile & accessoires", "Moodboards, matières et série pilote."], ["Objets de table", "Culture & maison", "Coffrets, verrerie et pièces d’histoire."], ["Éditions diaspora", "Distribution", "Sélection pensée pour les marchés internationaux."]],
+    headline: "Des produits et saveurs qui racontent une origine.",
+    intro: "Le pôle BAWON Produits & Alimentation réunit les boissons, spiritueux, cacao, objets, textile, cadeaux et collaborations. Boissons est une catégorie de produits, pas une division isolée.",
+    metrics: [["6", "gammes à structurer"], ["12", "références à documenter"], ["3", "partenaires créatifs à qualifier"]],
+    cards: [["BAWON Boissons", "Alimentation & boissons", "Spiritueux, cocktails, formats découverte et distribution sélective."], ["Cacao & gourmandises", "Alimentation", "Transformation, coffrets et circuits de distribution à structurer."], ["Collection Lakwa", "Objets & textile", "Accessoires, cadeaux, collaborations et séries limitées."]],
   },
   "bawon-boissons": {
     label: "BAWON Boissons",
