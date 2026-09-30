@@ -98,3 +98,55 @@ body {
 .bawon-bubble-3 {
   animation: bawon-bubble-float-3 7s ease-in-out infinite;
 }
+
+@keyframes bawon-globe-turn {
+  from { transform: rotateY(0deg) rotateZ(-8deg); }
+  to { transform: rotateY(360deg) rotateZ(-8deg); }
+}
+
+@keyframes bawon-map-breathe {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 0 45px rgba(122, 60, 255, .24); }
+  50% { transform: translate(-50%, -50%) scale(1.045); box-shadow: 0 0 75px rgba(214, 178, 111, .28); }
+}
+
+@keyframes bawon-ring-spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.bawon-intro-grain {
+  background-image: radial-gradient(rgba(255,255,255,.13) .55px, transparent .55px);
+  background-size: 13px 13px;
+  mask-image: radial-gradient(circle at center, black, transparent 72%);
+  opacity: .22;
+}
+
+.bawon-globe {
+  position: relative;
+  width: min(70vw, 460px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid rgba(214,178,111,.5);
+  background: radial-gradient(circle at 32% 29%, rgba(189,161,255,.34), transparent 16%), radial-gradient(circle at 64% 63%, rgba(214,178,111,.28), transparent 25%), #0c0714;
+  box-shadow: inset -45px -12px 65px rgba(0,0,0,.78), inset 16px 10px 45px rgba(255,255,255,.07), 0 0 90px rgba(104,55,184,.28);
+  animation: bawon-globe-turn 24s linear infinite;
+}
+.bawon-globe::before, .bawon-globe::after { content: ""; position: absolute; inset: 7%; border: 1px solid rgba(255,255,255,.12); border-radius: 50%; }
+.bawon-globe::after { inset: -1px 38%; border-color: rgba(214,178,111,.22); }
+.bawon-globe-grid { position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent 0 12%, rgba(255,255,255,.08) 12.4% 12.7%, transparent 13.1% 25%), repeating-linear-gradient(90deg, transparent 0 15%, rgba(255,255,255,.08) 15.4% 15.7%, transparent 16% 30%); opacity: .58; }
+.bawon-globe-land { position: absolute; border-radius: 48% 52% 54% 46%; background: linear-gradient(135deg, rgba(214,178,111,.56), rgba(106,65,158,.28)); filter: blur(1px); opacity: .68; }
+.bawon-globe-land-one { width: 37%; height: 23%; left: 15%; top: 37%; transform: rotate(-20deg); }
+.bawon-globe-land-two { width: 26%; height: 39%; right: 13%; top: 22%; transform: rotate(19deg); }
+.bawon-globe-point { position: absolute; z-index: 3; font-size: 8px; font-weight: 700; letter-spacing: .12em; color: #f3d99d; text-shadow: 0 0 12px #d6b26f; }
+.bawon-globe-point::before { content:""; display:block; width:7px; height:7px; margin: 0 auto 4px; border-radius:50%; background:#f3d99d; box-shadow: 0 0 14px 4px rgba(214,178,111,.35); }
+.bawon-globe-haiti { left: 39%; top: 53%; }.bawon-globe-america { left: 22%; top: 37%; }.bawon-globe-canada { left: 24%; top: 21%; }.bawon-globe-france { right: 22%; top: 31%; }.bawon-globe-africa { right: 16%; bottom: 22%; }
+.bawon-globe-arc { position:absolute; z-index:2; width: 46%; height: 25%; border-top: 1px solid rgba(214,178,111,.54); border-radius: 50%; transform-origin: left center; left: 42%; top: 54%; }.bawon-globe-arc-one { transform: rotate(-41deg); }.bawon-globe-arc-two { transform: rotate(19deg); }.bawon-globe-arc-three { transform: rotate(60deg); width: 34%; }
+.bawon-globe-still { animation-play-state: paused; }
+
+.bawon-ecosystem-map { position: relative; min-height: 530px; max-width: 780px; margin: 0 auto; }
+.bawon-map-ring { position:absolute; left:50%; top:50%; border: 1px solid rgba(214,178,111,.25); border-radius:50%; transform: translate(-50%,-50%); }.bawon-map-ring-one { width: min(74vw, 610px); height: min(74vw, 610px); animation: bawon-ring-spin 36s linear infinite; }.bawon-map-ring-two { width: min(51vw, 410px); height: min(51vw, 410px); border-color: rgba(196,181,253,.22); animation: bawon-ring-spin 21s linear infinite reverse; }
+.bawon-map-core { position:absolute; z-index:4; left:50%; top:50%; display:flex; height:136px; width:136px; flex-direction:column; align-items:center; justify-content:center; border-radius:50%; border:1px solid rgba(255,255,255,.24); background:rgba(9,6,14,.94); color:#fff; backdrop-filter: blur(12px); animation: bawon-map-breathe 5s ease-in-out infinite; }.bawon-map-core small { margin-top:5px; font-size:10px; text-transform:uppercase; letter-spacing:.2em; color:rgba(255,255,255,.55); }
+.bawon-map-pole { position:absolute; z-index:3; width:180px; border:1px solid rgba(255,255,255,.13); border-radius:18px; background:rgba(13,8,20,.83); padding:16px; backdrop-filter:blur(10px); transition:transform .25s ease,border-color .25s ease,background .25s ease; }.bawon-map-pole:hover { transform:scale(1.06); border-color:rgba(214,178,111,.65); background:rgba(31,20,38,.96); }.bawon-map-pole strong,.bawon-map-pole small,.bawon-map-pole i { display:block; }.bawon-map-pole strong { margin-top:7px; font-size:15px; }.bawon-map-pole small { margin-top:7px; font-size:11px; line-height:1.4; color:rgba(255,255,255,.57); }.bawon-map-pole i { margin-top:12px; font-size:11px; font-style:normal; color:#f3d99d; }.bawon-map-finance { left:50%; top:0; transform:translateX(-50%); }.bawon-map-products { left:0; top:50%; transform:translateY(-50%); }.bawon-map-drinks { right:0; top:50%; transform:translateY(-50%); }.bawon-map-industry { left:50%; bottom:0; transform:translateX(-50%); }
+.bawon-map-still .bawon-map-ring,.bawon-map-still .bawon-map-core { animation-play-state:paused; }
+@media (max-width: 640px) { .bawon-ecosystem-map { min-height:660px; }.bawon-map-pole { width:144px; padding:12px; }.bawon-map-core { width:112px; height:112px; }.bawon-map-core span { font-size:18px; }.bawon-map-products { left:0; }.bawon-map-drinks { right:0; }.bawon-map-ring-one { width:86vw; height:86vw; }.bawon-map-ring-two { width:56vw; height:56vw; } }
